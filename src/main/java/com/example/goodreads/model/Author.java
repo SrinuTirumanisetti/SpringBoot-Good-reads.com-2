@@ -16,6 +16,7 @@ public class Author {
     @Column(name = "authorname")
     private String authorName;
 
+    @ManyToMany(mappedBy = "authors")
     private List<Book> books = new ArrayList<>();
 
     public Author(){

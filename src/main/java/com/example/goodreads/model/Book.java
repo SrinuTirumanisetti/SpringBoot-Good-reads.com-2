@@ -23,6 +23,11 @@ public class Book {
     @JoinColumn(name = "publisherid")
     private Publisher publisher;
 
+    @ManyToMany
+    @JoinTable(name = "book_author",
+    JoinColumns = @JoinColumn(name="bookid"),
+    inverseJoinColumns = @JoinColumn(name = "authorid"))
+    
     private List<Author> authors = new ArrayList<>();
 
     public Book() {
