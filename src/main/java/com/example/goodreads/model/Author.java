@@ -2,6 +2,7 @@ package com.example.goodreads.model;
 
 import javax.persistence.*;
 import java.util.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "author")
@@ -16,6 +17,7 @@ public class Author {
     private String authorName;
 
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnoreProperties("authors")
     private List<Book> books = new ArrayList<>();
 
     public Author() {}
