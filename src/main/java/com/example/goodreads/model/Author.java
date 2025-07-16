@@ -2,7 +2,6 @@ package com.example.goodreads.model;
 
 import javax.persistence.*;
 import java.util.*;
-import com.example.goodreads.Book;
 
 @Entity
 @Table(name = "author")
@@ -19,34 +18,34 @@ public class Author {
     @ManyToMany(mappedBy = "authors")
     private List<Book> books = new ArrayList<>();
 
-    public Author(){
+    public Author() {}
 
-    }
-    public Author(int authorid, String authorName){
-        this.authorId = authorid;
+    public Author(int authorId, String authorName) {
+        this.authorId = authorId;
         this.authorName = authorName;
     }
 
-    public int getAuthorId(){
+    public int getAuthorId() {
         return authorId;
     }
-    public void setAuthorIdId(int authorId){
+
+    public void setAuthorId(int authorId) {
         this.authorId = authorId;
     }
 
-    public String getAuthorName(){
+    public String getAuthorName() {
         return authorName;
     }
-    public void setAuthorName(String authorName){
+
+    public void setAuthorName(String authorName) {
         this.authorName = authorName;
     }
 
-    public List<Book> getBooks(){
+    public List<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Books>){
+    public void setBooks(List<Book> books) {
         this.books = books;
     }
-
 }

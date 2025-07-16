@@ -2,7 +2,7 @@ package com.example.goodreads.model;
 
 import javax.persistence.*;
 import java.util.*;
-import com.example.goodreads.model.Author
+import com.example.goodreads.model.Author;
 
 @Entity
 @Table(name="book")
@@ -25,7 +25,7 @@ public class Book {
 
     @ManyToMany
     @JoinTable(name = "book_author",
-    JoinColumns = @JoinColumn(name="bookid"),
+    joinColumns = @JoinColumn(name="bookid"),
     inverseJoinColumns = @JoinColumn(name = "authorid"))
     
     private List<Author> authors = new ArrayList<>();
