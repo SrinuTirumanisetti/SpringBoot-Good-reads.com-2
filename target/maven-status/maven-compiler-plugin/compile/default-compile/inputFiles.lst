@@ -1,0 +1,16 @@
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/service/BookJpaService.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/controller/PublisherController.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/service/AuthorJpaService.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/model/Book.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/PublisherJpaRepository.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/controller/AuthorController.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/BookRepository.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/model/Publisher.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/model/Author.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/service/PublisherJpaService.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/BookJpaRepository.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/PublisherRepository.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/controller/BookController.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/GoodreadsApplication.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/AuthorJpaRepository.java
+/home/nxtwave/goodreads/src/main/java/com/example/goodreads/repository/AuthorRepository.java
