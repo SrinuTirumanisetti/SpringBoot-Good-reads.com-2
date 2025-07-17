@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import com.example.goodreads.model.Book;
+import java.util.NoSuchElementException;
 
 import java.util.ArrayList;
 import java.util.List;

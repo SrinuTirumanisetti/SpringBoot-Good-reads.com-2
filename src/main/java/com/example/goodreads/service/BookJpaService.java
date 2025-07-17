@@ -7,6 +7,7 @@ import com.example.goodreads.repository.BookJpaRepository;
 import com.example.goodreads.repository.AuthorJpaRepository;
 import com.example.goodreads.repository.PublisherJpaRepository;
 import com.example.goodreads.repository.BookRepository;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -64,23 +65,39 @@ public class BookJpaService implements BookRepository {
 
     @Override
     public Book updateBook(int bookId, Book book) {
-        Book newBook = bookJpaRepository.findById(bookId)
-                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        try {
+            Book newBook = bookJpaRepository.findById(bookId).get();
 
-        if (book.getName() != null) {
-            newBook.setName(book.getName());
-        }
-        if (book.getImageUrl() != null) {
-            newBook.setImageUrl(book.getImageUrl());
-        }
-        if (book.getPublisher() != null) {
-            int publisherId = book.getPublisher().getPublisherId();
-            Publisher newPublisher = publisherJpaRepository.findById(publisherId)
-                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong publisherId"));
-            newBook.setPublisher(newPublisher);
-        }
+            if (book.getName() != null) {
+                newBook.setName(book.getName());
+            }
+            if (book.getImageUrl() != null) {
+                newBook.setImageUrl(book.getImageUrl());
+            }
+            if (book.getPublisher() != null) {
+                Publisher publisher = book.getPublisher();
+                int publisherId = publisher.getPublisherId();
+                Publisher newPublisher = publisherJpaRepository.findById(publisherId).get();
+                newBook.setPublisher(newPublisher);
+            }
 
-        return bookJpaRepository.save(newBook);
+            if (book.getAuthors() != null) {
+                List<Integer> authorIds = new ArrayList<>();
+                for (Author author : book.getAuthors()) {
+                    authorIds.add(author.getAuthorId());
+                }
+
+                List<Author> authors = authorJpaRepository.findAllById(authorIds);
+                if (authors.size() != authorIds.size()) {
+                    throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Some authors not found");
+                }
+                
+                newBook.setAuthors(authors);
+            }
+            return bookJpaRepository.save(newBook);
+        } catch (NoSuchElementException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Wrong publisherId");
+        }
     }
 
     @Override
