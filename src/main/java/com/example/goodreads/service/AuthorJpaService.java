@@ -43,8 +43,24 @@ public class AuthorJpaService implements AuthorRepository {
 
     @Override
     public Author addAuthor(Author author) {
-        authorJpaRepository.save(author);
-        return author;
+        List<Integer> bookIds = new ArrayList<>();
+        for (Book book : author.getBooks()) {
+            bookIds.add(book.getId());
+        }
+
+        List<Book> books = bookJpaRepository.findAllById(bookIds);
+
+        author.setBooks(books);
+
+        for (Book book : books) {
+            book.getAuthors().add(author);
+        }
+
+        Author savedAuthor = authorJpaRepository.save(author);
+
+        bookJpaRepository.saveAll(books);
+
+        return savedAuthor;
     }
 
     @Override
