@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import com.example.goodreads.model.Book;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +54,16 @@ public class AuthorJpaService implements AuthorRepository {
             authorJpaRepository.save(new_author);
             return new_author;
         }catch(Exception e){
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @Override
+    public List<Book> getAuthorBooks(int authorId) {
+        try {
+            Author author = authorJpaRepository.findById(authorId).get();
+            return author.getBooks();
+        }catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
