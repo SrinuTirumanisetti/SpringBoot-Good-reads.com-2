@@ -65,12 +65,34 @@ public class AuthorJpaService implements AuthorRepository {
 
     @Override
     public Author updateAuthor(int authorId, Author author) {
-        try{
-            Author new_author = authorJpaRepository.findById(authorId).get();
-            if(author.getAuthorName()!=null)new_author.setAuthorName(author.getAuthorName());
-            authorJpaRepository.save(new_author);
-            return new_author;
-        }catch(Exception e){
+        try {
+            Author newAuthor = authorJpaRepository.findById(authorId).get();
+            if (author.getAuthorName() != null) {
+                newAuthor.setAuthorName(author.getAuthorName());
+            }
+            if (author.getBooks() != null) {
+                List<Book> books = newAuthor.getBooks();
+                for (Book book : books) {
+                    book.getAuthors().remove(newAuthor);
+                }
+                bookJpaRepository.saveAll(books);
+
+                List<Integer> newBookIds = new ArrayList<>();
+                for (Book book : author.getBooks()) {
+                    newBookIds.add(book.getId());
+                }
+
+                List<Book> newBooks = bookJpaRepository.findAllById(newBookIds);
+
+                for (Book book : newBooks) {
+                    book.getAuthors().add(newAuthor);
+                }
+                bookJpaRepository.saveAll(newBooks);
+
+                newAuthor.setBooks(newBooks);
+            }
+            return authorJpaRepository.save(newAuthor);
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
