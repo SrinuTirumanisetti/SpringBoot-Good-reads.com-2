@@ -1,7 +1,9 @@
 package com.example.goodreads.service;
 
 import com.example.goodreads.model.Author;
+import com.example.goodreads.model.Book;
 import com.example.goodreads.repository.AuthorJpaRepository;
+import com.example.goodreads.repository.BookJpaRepository;
 import com.example.goodreads.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class AuthorJpaService implements AuthorRepository {
 
     @Autowired
     private AuthorJpaRepository authorJpaRepository;
+
+    @Autowired
+    private BookJpaRepository bookJpaRepository;
 
     @Override
     public ArrayList<Author> getAuthors() {
@@ -55,7 +60,13 @@ public class AuthorJpaService implements AuthorRepository {
     @Override
     public void deleteAuthor(int authorId) {
         try {
-            authorJpaRepository.deleteById(authorId);
+                Author author = authorJpaRepository.findById(authorId).get();
+                List<Book> books = author.getBooks();
+                for(Book book:books){
+                    book.getAuthors().remove(author);
+                }
+                bookJpaRepository.saveAll(books);
+                authorJpaRepository.deleteById(authorId);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
