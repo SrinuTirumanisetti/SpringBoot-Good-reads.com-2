@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.example.goodreads.GoodreadsApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 37.401 s - in com.example.goodreads.GoodreadsApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 38.897 s - in com.example.goodreads.GoodreadsApplicationTests
