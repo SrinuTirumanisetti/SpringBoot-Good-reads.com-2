@@ -56,8 +56,14 @@ public class PublisherJpaService implements PublisherRepository {
     @Override
     public void deletePublisher(int publisherId) {
         try {
+            Publisher publisher = publisherJpaRepository.findById(publisherId).get();
+            ArrayList<Book> books = bookJpaRepository.findByPublisher(publisher);
+            for (Book book : books) {
+                book.setPublisher(null);
+            }
+            bookJpaRepository.saveAll(books);
             publisherJpaRepository.deleteById(publisherId);
-        } catch (Exception e) {
+        } catch(Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         throw new ResponseStatusException(HttpStatus.NO_CONTENT);
