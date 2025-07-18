@@ -1,7 +1,9 @@
 package com.example.goodreads.service;
 
 import com.example.goodreads.model.Publisher;
+import com.example.goodreads.model.Book;
 import com.example.goodreads.repository.PublisherJpaRepository;
+import com.example.goodreads.repository.BookJpaRepository;
 import com.example.goodreads.repository.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,9 @@ public class PublisherJpaService implements PublisherRepository {
 
     @Autowired
     private PublisherJpaRepository publisherJpaRepository;
+
+    @Autowired
+    private BookJpaRepository bookJpaRepository;
 
 
     @Override
