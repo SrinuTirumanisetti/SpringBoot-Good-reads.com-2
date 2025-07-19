@@ -1,3 +1,4 @@
+com/example/goodreads/service/PublisherJpaServiceTest.class
 com/example/goodreads/service/AuthorJpaServiceTest.class
 com/example/goodreads/GoodreadsApplicationTests.class
 com/example/goodreads/service/BookJpaServiceTest.class
