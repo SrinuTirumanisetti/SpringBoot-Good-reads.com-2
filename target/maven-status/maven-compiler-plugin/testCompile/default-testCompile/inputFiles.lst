@@ -1,1 +1,3 @@
 /home/nxtwave/goodreads/src/test/java/com/example/goodreads/GoodreadsApplicationTests.java
+/home/nxtwave/goodreads/src/test/java/com/example/goodreads/controller/AuthorControllerTest.java
+/home/nxtwave/goodreads/src/test/java/com/example/goodreads/controller/BookControllerTest.java
