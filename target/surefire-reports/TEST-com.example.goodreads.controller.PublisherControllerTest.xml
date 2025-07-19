@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.goodreads.controller.BookControllerTest" time="9.302" tests="8" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.example.goodreads.controller.PublisherControllerTest" time="5.594" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -56,12 +56,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testGetBookByIdNotFound" classname="com.example.goodreads.controller.BookControllerTest" time="0.698"/>
-  <testcase name="testGetBookPublisher" classname="com.example.goodreads.controller.BookControllerTest" time="0.699"/>
-  <testcase name="testGetBooks" classname="com.example.goodreads.controller.BookControllerTest" time="0.101"/>
-  <testcase name="testAddBook" classname="com.example.goodreads.controller.BookControllerTest" time="0.202"/>
-  <testcase name="testUpdateBook" classname="com.example.goodreads.controller.BookControllerTest" time="0.005"/>
-  <testcase name="testGetBookByIdFound" classname="com.example.goodreads.controller.BookControllerTest" time="0.098"/>
-  <testcase name="testDeleteBook" classname="com.example.goodreads.controller.BookControllerTest" time="0.093"/>
-  <testcase name="testGetBookAuthors" classname="com.example.goodreads.controller.BookControllerTest" time="0.006"/>
+  <testcase name="testAddPublisher" classname="com.example.goodreads.controller.PublisherControllerTest" time="0.092"/>
+  <testcase name="testGetPublisherByIdNotFound" classname="com.example.goodreads.controller.PublisherControllerTest" time="0.007"/>
+  <testcase name="testGetPublisherByIdFound" classname="com.example.goodreads.controller.PublisherControllerTest" time="0.089"/>
+  <testcase name="testGetPublishers" classname="com.example.goodreads.controller.PublisherControllerTest" time="0.005"/>
 </testsuite>
