@@ -1,4 +1,5 @@
 com/example/goodreads/service/AuthorJpaServiceTest.class
 com/example/goodreads/GoodreadsApplicationTests.class
+com/example/goodreads/service/BookJpaServiceTest.class
 com/example/goodreads/controller/BookControllerTest.class
 com/example/goodreads/controller/AuthorControllerTest.class
